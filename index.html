@@ -22,14 +22,14 @@
       <div id="map"></div>
     </section>
     <section>
-      <div class="filter-options">
+      <div class="filter-options" aria-labelledby="filter-header"  role="form">
         <h2 id="filter-header">Filter Results</h2>
         <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()"
-                aria-labelledby="filter-header">
+                aria-label="filter neighborhood">
           <option value="all">All Neighborhoods</option>
         </select>
         <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()"
-                aria-labelledby="filter-header">
+                aria-label="filter cuisines">
           <option value="all">All Cuisines</option>
         </select>
       </div>
