@@ -344,8 +344,7 @@ and (orientation: landscape){
 
 /* Portrait and Landscape */
 @media only screen
-  and (max-width: 667px)
-  and (-webkit-min-device-pixel-ratio: 2) {
+  and (max-width: 667px) {
     nav {
       line-height: 1;
     }
@@ -375,7 +374,7 @@ and (orientation: landscape){
   * medium devices
   */
 @media only screen
-  and (max-width:667px) {
+  and (min-width:667px) {
     nav {
       padding: 10px 0;
     }
