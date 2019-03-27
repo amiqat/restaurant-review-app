@@ -1,6 +1,8 @@
 let static_cache = 'restaurant-static-v1';
 
 self.addEventListener('install', ev => {
+    console.log('install');
+
     // installing assets to be cached
     ev.waitUntil(
         caches.open(static_cache)
@@ -9,7 +11,8 @@ self.addEventListener('install', ev => {
                 [
                 '/',
                 '/restaurant.html',
-                '/data/restaurant.json',
+                '/css/styles.css',
+                '/data/restaurants.json',
                 '/img/1.jpg',
                 '/img/2.jpg',
                 '/img/3.jpg',
@@ -30,6 +33,7 @@ self.addEventListener('install', ev => {
 });
 
 self.addEventListener('activate', ev => {
+    console.log('activated');
     // update service worker
     ev.waitUntil(
         caches.keys().then( cacheNames => {
@@ -38,7 +42,7 @@ self.addEventListener('activate', ev => {
                     return cacheName.startsWith('restaurant-')
                     && cacheName != static_cache;
                 }).map(cacheName => {
-                    return cache.delete(cacheName);
+                    return caches.delete(cacheName);
                 })
             )
         })
@@ -47,11 +51,11 @@ self.addEventListener('activate', ev => {
 
 self.addEventListener('fetch', ev => {
     ev.respondWith(
-        caches.match(event.request).then( response => {
-            return response || fetch(event.request).then( res => {
-                return caches.open(cacheName).then(cache => {
-                    cache.put(event.request, res.clone());
-                    return res;
+        caches.match(ev.request).then( response => {
+            return response || fetch(ev.request).then( resp => {
+                return caches.open(static_cache).then(cache => {
+                    cache.put(ev.request, resp.clone());
+                    return resp;
                 });
             });
         }).catch(function (error) {

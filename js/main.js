@@ -1,3 +1,16 @@
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker
+    .register('../sw.js', {
+      // scope: '/'
+    })
+    .then((reg) => {
+      console.log('Service Worker registered', reg.scope);
+    })
+    .catch(error => {
+      console.log('Error: ', error);
+    });
+}
+
 let restaurants,
   neighborhoods,
   cuisines
@@ -214,21 +227,6 @@ addMarkersToMap = (restaurants = self.restaurants) => {
   });
 } */
 
-/** 
+/**
  * register the service worker
  */
-
- if(!navigator.serviceWorker) {
-   console.log("not supported");
-  }
- else{
-    // console.log("ok");
-    navigator.serviceWorker.register('/sw.js')
-    .then( reg => {
-      if(reg.active)
-        console.log('active');
-    })
-    .catch( er => {
-      console.log('error: '+er);
-    })
- }
