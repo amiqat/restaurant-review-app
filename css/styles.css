@@ -53,7 +53,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   color: #ddd;
   font-size: 8pt;
   letter-spacing: 1px;
-  padding: 25px;
+  padding: 20px;
   text-align: center;
   text-transform: uppercase;
 }
@@ -221,7 +221,7 @@ nav h1 a {
   height: 80%;
   position: fixed;
   right: 0;
-  top: 130px;
+  top: 110px;
   width: 50%;
 }
 
@@ -272,12 +272,12 @@ nav h1 a {
 #restaurant-container, #reviews-container {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
-  padding: 140px 40px 30px;
-  width: 45vw;
+  padding: 100px 30px 30px;
+  width: 40vw;
 }
 
 #reviews-container {
-  padding: 30px 40px 80px;
+  padding: 30px 30px 80px;
 }
 
 #reviews-container h2 {
@@ -345,6 +345,10 @@ and (orientation: landscape){
 /* Portrait and Landscape */
 @media only screen
   and (max-width: 667px) {
+    .inside header {
+      position: absolute;
+    }
+
     nav {
       line-height: 1;
     }
@@ -354,7 +358,27 @@ and (orientation: landscape){
     }
 
     #map {  /* increase the space area */
+      height: 65vh;
+    }
+
+    .inside #map-container {
+      position: relative;
+      top: 120px;
       height: 50vh;
+      width: 100%;
+      margin-bottom: 120px;
+    }
+
+    #restaurant-container, #reviews-container {
+      width: 90%;
+      margin: auto;
+      padding: 0;
+    }
+
+    .inside #footer {
+      position: relative;
+      padding: 30px 0;
+      width: 100%;
     }
 }
 
@@ -385,37 +409,13 @@ and (orientation: landscape){
       width: 100%;
     }
 
-    .inside header {
-      position: absolute;
-    }
-
     .leaflet-control-attribution {
       width: 99%;
       margin: auto;
       padding: 0;
     }
 
-    .inside #map-container {
-      position: relative;
-      top: 100px;
-      height: 50vh;
-      width: 100%;
-      margin-bottom: 140px;
-    }
-
-    #restaurant-container, #reviews-container {
-      width: 90%;
-      margin: auto;
-      padding: 0;
-    }
-
     #restaurant-container {
       margin-top: 40px;
-    }
-
-    .inside #footer {
-      position: relative;
-      padding: 30px 0;
-      width: 100%;
     }
 }
